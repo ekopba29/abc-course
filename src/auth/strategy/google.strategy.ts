@@ -11,7 +11,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google-strategy'
             clientSecret: "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",
             callbackURL: "http://localhost:3001/api/auth/google/redirect",
             scope: ['email', 'profile'],
-            failureRedirect: "http://localhost:3001/api/auth/google/login"
+            failureRedirect: "http://localhost:3000/"
         })
     }
 

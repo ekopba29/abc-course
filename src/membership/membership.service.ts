@@ -18,6 +18,11 @@ export class MembershipService {
         return membership;
     }
 
+    async findAll(): Promise<MembershipType[]> {
+        const membership = await this.membershipRepository.find();
+        return membership;
+    }
+
     async setPlanUser(plan_id: number, user_id: number): Promise<Boolean> {
         const update = await this.userRepository
             .createQueryBuilder()

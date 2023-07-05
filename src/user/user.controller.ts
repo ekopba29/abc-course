@@ -38,25 +38,25 @@ export class UserController {
     async chooseVideo(@Query('video_id', ParseIntPipe) videoId: number, @Req() request: any, @Res() res: Response) {
 
         const findVideo = await this.videoRepo.findOneBy({ id: videoId })
-        
+
         if (!findVideo) {
             return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Video Not Found' });
         }
-        
+
         const findUser = await this.userRepo.findOneBy({ id: request.user.id })
-        
+
         if (!findUser) {
             return res.status(HttpStatus.BAD_REQUEST).send({ message: 'User Not Found' });
         }
-        
+
         const itemMembership = await this.membershipItemType.findOneBy({ id: findUser.membership_type_id })
-        
+
         if (!itemMembership) {
             return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Plan Not Found' });
         }
-        
+
         const totalVide = await this.userVideoRepo.countBy({ user_id: request.user.id })
-        
+
         if (totalVide >= itemMembership.total_video && !itemMembership.unlimited_video) {
             return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Video Is Full' });
         }
@@ -134,6 +134,40 @@ export class UserController {
         return res.status(HttpStatus.CREATED).send(video);
 
 
+    }
+
+    @UseGuards(JwtGuard)
+    @Get('my_video')
+    async getMyVideo(@Req() request: any, @Res() res: Response) {
+        const findVideo = await this.userVideoRepo.find({
+            where: {
+                user_id: request.user.id
+            },
+            relations: ["video"] // I get All object Entity (userId, password, login...) I want to only name and surname
+        });
+
+        if (!findVideo) {
+            return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Video Not Found' });
+        }
+
+        return res.status(HttpStatus.OK).send(findVideo);
+    }
+
+    @UseGuards(JwtGuard)
+    @Get('my_article')
+    async getMyArticle(@Req() request: any, @Res() res: Response) {
+        const findArticle = await this.userArticleRepo.find({
+            where: {
+                user_id: request.user.id
+            },
+            relations: ["article"] // I get All object Entity (userId, password, login...) I want to only name and surname
+        });
+
+        if (!findArticle) {
+            return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Article Not Found' });
+        }
+
+        return res.status(HttpStatus.OK).send(findArticle);
     }
 
 }

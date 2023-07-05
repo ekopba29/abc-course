@@ -33,4 +33,21 @@ export class MembershipController {
 
         return res.status(HttpStatus.NOT_IMPLEMENTED).send({ message: 'Cannot Update Plan' });
     }
+
+    @UseGuards(JwtGuard)
+    @Get('all_plan')
+    async getAllPlan(
+        @Req() request: any,
+        @Res() res: Response
+    ) {
+
+        const getPlan = await this.membershipTypeService.findAll()
+
+        if (!getPlan) {
+            return res.status(HttpStatus.BAD_REQUEST).send({ message: 'Plan Not Found' });
+        }
+
+
+        return res.status(HttpStatus.OK).send(getPlan);
+    }
 }

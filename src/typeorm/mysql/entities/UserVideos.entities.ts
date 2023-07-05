@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToMany, ManyToOne } from 'typeorm';
+import { Videos } from './Videos.entities';
 
 @Entity({ name: 'user_videos' })
 export class UserVideos {
@@ -11,5 +12,10 @@ export class UserVideos {
 
   @Column()
   video_id: number;
+
+  @ManyToOne(() => Videos)
+  @JoinColumn({name:'video_id'})
+  video: Videos
+
 
 }

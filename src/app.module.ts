@@ -13,6 +13,8 @@ import { UserVideos } from './typeorm/mysql/entities/UserVideos.entities';
 import { UserArticle } from './typeorm/mysql/entities/UserArticles.entities';
 import { Videos } from './typeorm/mysql/entities/Videos.entities';
 import { Articles } from './typeorm/mysql/entities/Articles.entities';
+import { ControllerModule } from './controller/controller.module';
+import { ContentModule } from './content/content.module';
 
 @Module({
   imports: [
@@ -29,7 +31,10 @@ import { Articles } from './typeorm/mysql/entities/Articles.entities';
       entities: [User, UserOauth, MembershipItemType, MembershipType, UserVideos, UserArticle, Videos, Articles],
       synchronize: true,
     }),
-    MembershipModule,],
+    MembershipModule,
+    ControllerModule,
+    ContentModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

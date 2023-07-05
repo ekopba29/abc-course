@@ -1,7 +1,7 @@
 import { Controller, Get, HttpStatus, Req, Res, UseGuards } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { AuthGuard } from '@nestjs/passport';
-import { response } from 'express';
+import { Response } from 'express';
 import { UserService } from 'src/user/user.service';
 
 @Controller('auth')
@@ -18,7 +18,7 @@ export class AuthController {
 
     @Get('google/redirect')
     @UseGuards(AuthGuard('google-strategy'))
-    async handleCallbackGoogleLogin(@Req() request: any) {
+    async handleCallbackGoogleLogin(@Req() request: any, @Res() response: any) {
 
         if (!request.user) {
             return response.status(HttpStatus.UNAUTHORIZED).json({ message: 'Unauthorized' });
@@ -32,10 +32,10 @@ export class AuthController {
 
         const payloadJWT = { id: user.id, username: request.user.email };
 
-        return {
-            user,
-            access_token: await this.jwtService.signAsync(payloadJWT)
-        }
-
+        return response.redirect('http://localhost:3000/callback_google?' + new URLSearchParams({
+            email: request.user.email,
+            access_token: await this.jwtService.signAsync(payloadJWT),
+            membership: String(user.membership_type_id),
+        }).toString())
     }
 }

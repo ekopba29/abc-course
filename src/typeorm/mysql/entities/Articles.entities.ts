@@ -6,7 +6,10 @@ export class Articles {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column("text")
   content: string;
+
+  @Column()
+  title: string;
 
 }
