@@ -44,20 +44,50 @@
 			"response": []
 		},
 		{
-			"name": "User Choose Video",
+			"name": "Get All Plan",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJla29wdXJub21vLm9mZmljZUBnbWFpbC5jb20iLCJpYXQiOjE2ODg0ODA0MjMsImV4cCI6MTY4ODQ4NDAyM30.XBKHeVG7I9IC0CEkTVFTpKGMT43KvbiEvrkZGLK7aYw",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJla29wdXJub21vLm9mZmljZUBnbWFpbC5jb20iLCJpYXQiOjE2ODg1MzI3MjQsImV4cCI6MTY4ODUzNjMyNH0.Y1S-Hi8WbHNPFqYiohkTPf8lFUvi8h-kTN4UkKI7VXc",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/membership/all_plan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"membership",
+						"all_plan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Choose Video",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJla29wdXJub21vLm9mZmljZUBnbWFpbC5jb20iLCJpYXQiOjE2ODg1MTk5MDYsImV4cCI6MTY4ODUyMzUwNn0.flHRb-7CHYCsQWucN7qxoTW6dYv1ngVNi8OghGonw9I",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:3001/api/user/choose_video?video_id=1",
 					"protocol": "http",
@@ -186,6 +216,130 @@
 							"key": "video_id",
 							"value": "2"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Article",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJiYXl1LmRldm1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg4NDgxNjU1LCJleHAiOjE2ODg0ODUyNTV9.e6Pl6rGNPfU62U4Mo1ND5YAfDaXt8BJsz2POVQUEXag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/user/my_article",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"user",
+						"my_article"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Video",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJiYXl1LmRldm1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg4NDgxNjU1LCJleHAiOjE2ODg0ODUyNTV9.e6Pl6rGNPfU62U4Mo1ND5YAfDaXt8BJsz2POVQUEXag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/user/my_video",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"user",
+						"my_video"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Video",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJiYXl1LmRldm1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg4NDgxNjU1LCJleHAiOjE2ODg0ODUyNTV9.e6Pl6rGNPfU62U4Mo1ND5YAfDaXt8BJsz2POVQUEXag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/content/videos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"content",
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Article",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJiYXl1LmRldm1haWxAZ21haWwuY29tIiwiaWF0IjoxNjg4NDgxNjU1LCJleHAiOjE2ODg0ODUyNTV9.e6Pl6rGNPfU62U4Mo1ND5YAfDaXt8BJsz2POVQUEXag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/api/content/articles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"content",
+						"articles"
 					]
 				}
 			},
